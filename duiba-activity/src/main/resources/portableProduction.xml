@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<portable-config>
+	<config-file path="WEB-INF/web.xml">
+		<replace xpath="/web-app/context-param[2]/param-value">production</replace>
+	</config-file>
+
+	<config-file path="WEB-INF/classes/application.properties">
+		<replace key="environment">production</replace>
+		<replace key="dubbo.registry.center">10.10.78.95:2181,10.10.78.61:2181,10.10.77.208:2181,10.10.52.114:2181,10.10.52.115:2181
+		</replace>
+	</config-file>
+</portable-config>

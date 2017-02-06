@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sohu.tv.spaces</groupId>
+	<artifactId>duiba-activity</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>duiba-activity Webapp</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.2.RELEASE</spring.version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>snapshots-nexus</id>
+			<url>http://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Nexus</id>
+			<name>Nexus Public Repository</name>
+			<url>http://dev.hd.sohu.com.cn/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>sohu.nexus</id>
+			<url>http://index.tv.sohuno.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>Nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://dev.hd.sohu.com.cn/nexus/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>Nexus-3rd</id>
+			<name>Nexus local Repository</name>
+			<url>http://dev.hd.sohu.com.cn/nexus/content/repositories/3rdparty</url>
+		</repository>
+		<repository>
+			<id>Nexus-snapshot</id>
+			<name>Nexus local snapshot</name>
+			<url>http://dev.hd.sohu.com.cn/nexus/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- 兑吧 -->
+		<dependency>
+			<groupId>cn.com.duiba.credits</groupId>
+			<artifactId>duiba-java-sdk</artifactId>
+			<version>0.0.14</version>
+		</dependency>
+		<!-- javax -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- netflix -->
+		<dependency>
+			<groupId>com.netflix.archaius</groupId>
+			<artifactId>archaius-core</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- dubbo -->
+		<dependency>
+			<groupId>com.dubbo</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.dubbo</groupId>
+			<artifactId>dubbo-rpc-rmi-scallop</artifactId>
+			<version>2.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.15.0-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.2.5.Final</version>
+		</dependency>
+		<!-- 关于spring remoting的rmi服务2.5版本和3.0版本不兼容的解决办法 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-rmi-compatibility</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+		<!-- util -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<!-- sohu lib -->
+		<dependency>
+			<groupId>com.sohu.starfans</groupId>
+			<artifactId>spaces-starfans-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sohu.blog</groupId>
+			<artifactId>blog-base-core</artifactId>
+			<version>3.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sohu.spaces</groupId>
+			<artifactId>spaces-user-core</artifactId>
+			<version>1.2.3-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>duiba-activity</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- 此插件用于执行配置文件替换 -->
+			<plugin>
+				<groupId>com.juvenxu.portable-config-maven-plugin</groupId>
+				<artifactId>portable-config-maven-plugin</artifactId>
+				<version>1.1.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>replace-package</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<portableConfig>${portableConfig}</portableConfig>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>production</id>
+			<!-- 自动激活该配置，除非指定其他profile -->
+			<properties>
+				<portableConfig>src/main/resources/portableProduction.xml</portableConfig>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<portableConfig>src/main/resources/portableDevelop.xml</portableConfig>
+			</properties>
+		</profile>
+	</profiles>
+</project>
