@@ -38,7 +38,6 @@ public class DuibaController {
     @Resource
     private AccountService accountService;
 
-    @SuppressWarnings("unchecked")
     @RequestMapping("/autologin")
     public String autoLoginUrl(HttpServletRequest request, HttpServletResponse response) {
 
