@@ -20,7 +20,7 @@
 	<import resource="consumer-dev.xml" />
 	<import resource="consumer.xml" />
 
-	<context:component-scan base-package="com.sohu.tv.duiba.web.controller">
+	<context:component-scan base-package="com.sohu.tv.duiba">
 		<!-- 排除springmvc的扫描范围，由于子上下文会继承父上下文并覆盖，所以此处扫描controller无用，会被覆盖掉。浪费资源 -->
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -32,6 +32,16 @@
 		<property name="zipkinHost" value="http://localhost:9411" />
 	</bean>
 
+	<bean id="okHttpClient" class="com.sohu.tv.duiba.bean.ZipkinOKHttpClientFactoryBean">
+		<property name="serviceName" value="${zipkin.serviceName}" />
+		<property name="zipkinHost" value="${zipkin.Host}" />
+		<property name="connectTimeout" value="${zipkin.connectTimeout}" />
+		<property name="readTimeout" value="${zipkin.readTimeout}" />
+		<property name="flushInterval" value="${zipkin.flushInterval}" />
+		<property name="traceSample" value="${zipkin.traceSample}" />
+		<property name="compressionEnabled" value="${zipkin.compressionEnabled}" />
+	</bean>
+
 	<bean id="braveFilter" class="com.github.kristofa.brave.servlet.BraveServletFilter">
 		<constructor-arg value="#{brave.serverRequestInterceptor()}" />
 		<constructor-arg value="#{brave.serverResponseInterceptor()}" />
@@ -39,16 +49,11 @@
 			<bean class="com.github.kristofa.brave.http.DefaultSpanNameProvider" />
 		</constructor-arg>
 	</bean>
-	<!-- <mvc:interceptors>
-		<bean class="com.github.kristofa.brave.spring.ServletHandlerInterceptor">
-			<constructor-arg value="#{brave.serverRequestInterceptor()}" />
-			<constructor-arg value="#{brave.serverResponseInterceptor()}" />
-			<constructor-arg>
-				<bean class="com.github.kristofa.brave.http.DefaultSpanNameProvider" />
-			</constructor-arg>
-			<constructor-arg value="#{brave.serverSpanThreadBinder()}" />
-		</bean>
-	</mvc:interceptors> -->
+	<!-- <mvc:interceptors> <bean class="com.github.kristofa.brave.spring.ServletHandlerInterceptor">
+		<constructor-arg value="#{brave.serverRequestInterceptor()}" /> <constructor-arg
+		value="#{brave.serverResponseInterceptor()}" /> <constructor-arg> <bean class="com.github.kristofa.brave.http.DefaultSpanNameProvider"
+		/> </constructor-arg> <constructor-arg value="#{brave.serverSpanThreadBinder()}"
+		/> </bean> </mvc:interceptors> -->
 	<!-- <bean class="com.github.kristofa.brave.mysql.MySQLStatementInterceptorManagementBean"
 		destroy-method="close"> <constructor-argvalue="#{brave.clientTracer()}"/>
 		</bean> -->
